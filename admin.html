@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Soko la Mifugo · Admin</title>
+<style>
+:root{--bg:#fff;--paper:#F5F6F8;--tint:#EEF5EE;--tint2:#DCEBDD;--line:#E1E5EA;--ink:#121212;--mut:#59626E;--brand:#2E7D32;--green:#2E7D32;--green-d:#1B5E20;--blue:#1565C0;--amber:#FFB300;--red:#C62828;--display:'Fraunces',Georgia,serif;--sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 16px/1.5 var(--sans)}
+header{padding:12px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;background:var(--green-d);color:#fff;z-index:5;border-bottom:3px solid var(--amber)}
+header b{font:600 20px var(--display);color:#fff;flex:1}
+main{max-width:980px;margin:auto;padding:16px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.btn{border:0;border-radius:10px;padding:10px 16px;font-weight:800;background:var(--green);color:#fff;min-height:44px}
+.btn.ghost{background:var(--bg);color:var(--ink);border:1.5px solid var(--line)}
+header .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn.red{background:var(--red)}.btn.grn{background:var(--green)}
+.btn.sm{padding:6px 12px;min-height:36px;font-size:14px}
+.btn[disabled]{opacity:.5;cursor:default}
+input,select{border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--tint);color:var(--ink);min-height:44px}
+.login{max-width:380px;margin:60px auto;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--bg);box-shadow:0 1px 2px rgba(18,18,18,.05)}
+.login h1{margin:0 0 8px;font:600 26px var(--display)}
+.login input{width:100%;margin:10px 0}
+.err{color:var(--red);font-weight:700;min-height:1.4em}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{border:1.5px solid var(--line);background:var(--bg);border-radius:99px;padding:8px 16px;font-weight:700}
+.tabs button.on{background:var(--green);border-color:var(--green);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.stat{background:var(--bg);border:1px solid var(--line);border-top:3px solid var(--amber);border-radius:14px;padding:14px}
+.stat b{display:block;font:700 30px var(--display);color:var(--green-d)}
+.stat span{color:var(--mut);font-weight:700;font-size:14px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.bar input{flex:1;min-width:160px}
+.item{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.item .th{width:72px;height:72px;border-radius:10px;background:var(--tint);flex:none;object-fit:cover;display:grid;place-items:center;color:var(--mut);font-size:12px}
+.item .mid{flex:1;min-width:200px}
+.item h3{margin:0 0 2px;font:600 18px var(--display)}
+.item small{color:var(--mut);font-weight:600}
+.badge{display:inline-block;border-radius:99px;padding:2px 10px;font-weight:700;font-size:12px;background:var(--tint2);color:var(--green-d);margin-right:4px}
+.badge.g{background:var(--green);color:#fff}.badge.r{background:var(--red);color:#fff}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.empty{padding:24px;text-align:center;color:var(--mut);border:1.5px dashed var(--line);border-radius:14px}
+.more{display:block;margin:12px auto}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header><b>Soko la Mifugo · Admin</b><button class="btn ghost sm" id="out" hidden>Sign out</button></header>
+<main>
+  <div class="login" id="login">
+    <h1>Admin sign in</h1>
+    <div style="color:var(--mut)">Type the admin password you set in Render (the value of ADMIN_TOKEN).</div>
+    <input id="tok" type="password" autocomplete="current-password" placeholder="Admin password">
+    <button class="btn" id="go" style="width:100%">Sign in</button>
+    <div class="err" id="lerr" role="alert"></div>
+  </div>
+  <div id="app" hidden>
+    <div class="tabs" id="tabs">
+      <button data-t="over" class="on">Overview</button>
+      <button data-t="list">Listings</button>
+      <button data-t="rep">Reports</button>
+    </div>
+    <div id="view"></div>
+    <div class="err" id="aerr" role="alert"></div>
+  </div>
+</main>
+<script src="/admin.js"></script>
+</body>
+</html>
